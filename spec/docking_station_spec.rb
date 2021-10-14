@@ -35,4 +35,9 @@ describe DockingStation do
     #subject.bike refers to the instance of the Bike class created on line 32
   end
 
+  it 'Return a default value if the user doesnt enter an argument' do
+    my_docking_station = DockingStation.new
+    expect(my_docking_station.capacity). to eq DockingStation::DEFAULT_CAPACITY
+  end 
+
 end
