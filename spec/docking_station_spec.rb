@@ -16,7 +16,7 @@ describe DockingStation do
     end 
 
   it 'raises an error when full' do
-      20.times { subject.docked_bike Bike.new} #argument has been added as per docked_bike method.
+      DockingStation::DEFAULT_CAPACITY.times { subject.docked_bike Bike.new} #argument has been added as per docked_bike method.
       expect { subject.docked_bike Bike.new }.to raise_error 'Capacity Full'
     end 
 
