@@ -2,26 +2,22 @@
 require "docking_station"
 
 describe DockingStation do
-  
+
+#subject refers to instance of DockingStation class
   it 'DockingStation releases bike' do
-    #subject refers to instance of DockingStation class
     bike = Bike.new
     subject.docked_bike(bike)
     expect(subject.release_bike).to eq(bike)
   end 
 
  #nested describe because we're describing behavious to this particular method.
-  describe '#release_bike' do 
-    it 'raises an error when there are no bikes available' do
+  it 'raises an error when there are no bikes available' do
       expect { subject.release_bike }.to raise_error 'No bikes available.'
     end 
-  end 
 
-  describe '#docked_bike' do 
-      it 'raises an error when full' do
-        subject.docked_bike(Bike.new) #argument has been added as per docked_bike method.
-        expect { subject.docked_bike Bike.new }.to raise_error 'Capacity Full'
-      end 
+  it 'raises an error when full' do
+      20.times { subject.docked_bike Bike.new} #argument has been added as per docked_bike method.
+      expect { subject.docked_bike Bike.new }.to raise_error 'Capacity Full'
     end 
 
 
@@ -32,11 +28,11 @@ describe DockingStation do
     # subject.docked_bike(bike)
   end
 
-  it 'Returns a bike to the docking station' do
+  it 'Ability to return a bike to the docking station' do
     bike = Bike.new
     subject.docked_bike(bike)
-    expect(subject.bike).to eq bike
-    #subject.bike refers to the instance of the Bike class created on line 36
+    expect(subject.docked_bike(bike)).to eq(true)
+    #subject.bike refers to the instance of the Bike class created on line 32
   end
 
 end
